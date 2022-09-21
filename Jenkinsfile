@@ -11,6 +11,11 @@ pipeline {
          archive 'target/*.jar'
        }
      }
+        stage('Mutation Tests - PIT') {
+      steps {
+       sh "mvn test"
+      }
+    }
     
     
     }
