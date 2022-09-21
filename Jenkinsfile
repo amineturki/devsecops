@@ -1,10 +1,8 @@
 
 
 pipeline {
+  
   agent any
-
-
-
   stages {
 
      stage('Build Artifact - Maven') {
@@ -13,10 +11,8 @@ pipeline {
          archive 'target/*.jar'
        }
      }
-
-
-
-
+    
+    
     }
 
 }
