@@ -17,6 +17,16 @@ pipeline {
       }
     }
     
+    //    stage('Docker Build and Push') {
+ //      steps {
+ //        withDockerRegistry([credentialsId: "docker-hub", url: ""]) {
+ //          sh 'printenv'
+ //          sh 'sudo docker build -t amineturki/sringboot-app:""$GIT_COMMIT"" .'
+ //          sh 'docker push amineturki/sringboot-app:""$GIT_COMMIT""'
+ //        }
+ //      }
+ //    }
+    
     
     }
 
