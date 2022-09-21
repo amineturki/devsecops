@@ -35,7 +35,7 @@ pipeline {
                sh "sed -i 's#replace#amineturki/sringboot-app:${GIT_COMMIT}#g' k8s_PROD-deployment_service.yaml"
                sh "kubectl -n prod apply -f k8s_PROD-deployment_service.yaml"
              }
-           },
+           }
          
          
        }
