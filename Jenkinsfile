@@ -11,7 +11,7 @@ pipeline {
          archive 'target/*.jar'
        }
      }
-        stage('Mutation Tests - PIT') {
+        stage('UniT test') {
       steps {
        sh "mvn test"
       }
@@ -24,6 +24,20 @@ pipeline {
            sh 'sudo docker build -t amineturki/sringboot-app:""$GIT_COMMIT"" .'
            sh 'docker push amineturki/sringboot-app:""$GIT_COMMIT""'
          }
+       }
+     }
+    
+         stage('K8S Deployment - PROD') {
+       steps {
+         
+           "Deployment": {
+             withKubeConfig([credentialsId: 'kubeconfig']) {
+               sh "sed -i 's#replace#amineturki/sringboot-app:${GIT_COMMIT}#g' k8s_PROD-deployment_service.yaml"
+               sh "kubectl -n prod apply -f k8s_PROD-deployment_service.yaml"
+             }
+           },
+         
+         
        }
      }
     
