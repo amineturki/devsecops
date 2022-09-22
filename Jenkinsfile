@@ -46,11 +46,7 @@ stage('unit test') {
   -Dsonar.login=sqp_4ded4184a0f8bdc4260a25ecac8a94e9b633c30e"  
               
             }
-                  timeout(time: 2, unit: 'MINUTES') {
-           script {
-             waitForQualityGate abortPipeline: true
-          }
-        }
+          
                      }
 
     }
