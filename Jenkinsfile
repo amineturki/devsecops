@@ -35,6 +35,22 @@ stage('unit test') {
              }
           }
     
+     stage('SonarQube SAST') {
+            steps {
+              withSonarQubeEnv('SonarQube') {
+              sh "mvn clean verify sonar:sonar  -Dsonar.projectKey=devsecops  -Dsonar.host.url=http://devsecops-demo-amine.eastus.cloudapp.azure.com:9000"  
+              
+            }
+              
+                       timeout(time: 2, unit: 'MINUTES') {
+           script {
+             waitForQualityGate abortPipeline: true
+          }
+        }
+ 
+     }
+    }
+    
         stage('Docker Build and Push') {
        steps {
          withDockerRegistry([credentialsId: "docker-hub", url: ""]) {
