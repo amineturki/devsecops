@@ -52,9 +52,7 @@ stage('unit test') {
     }
     
     	 stage('Vulnerability Scan - Docker') {
-       steps {
- 
- 	
+       steps {	
  		sh "mvn dependency-check:check"
 			}
          post {
@@ -64,7 +62,7 @@ stage('unit test') {
 }
      	
       }
-    }
+    
     
         stage('Docker Build and Push') {
        steps {
