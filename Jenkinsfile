@@ -40,7 +40,7 @@ stage('unit test') {
                      withSonarQubeEnv('SonarQube') 
 
                {
-              sh "mvn clean verify sonar:sonar   -Dsonar.projectKey=devsecops1   -Dsonar.host.url=http://devsecops-demo-amine.eastus.cloudapp.azure.com:9000   -Dsonar.login=sqp_4a7c2b4ab2506541fff8e57b92995fcf20a0f382"  
+              sh "mvn clean verify sonar:sonar   -Dsonar.projectKey=devsecops1   -Dsonar.host.url=http://devsecops-demo-amine.eastus.cloudapp.azure.com:9000   "  
               
             }
                   timeout(time: 2, unit: 'MINUTES') {
