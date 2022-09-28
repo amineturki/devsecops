@@ -3,6 +3,16 @@
 pipeline {
   
   agent any
+	
+	  environment {
+    deploymentName = "devsecops"
+    containerName = "devsecops-container"
+    serviceName = "devsecops-svc"
+    imageName = "amineturki/sringboot-app:${GIT_COMMIT}"
+    applicationURL="http://devsecops-demo-amine.eastus.cloudapp.azure.com"
+    applicationURI="/increment/99"
+  }
+	//http://devsecops-demo-amine.eastus.cloudapp.azure.com
   stages {
 
      stage('Build Artifact - Maven') {
@@ -90,16 +100,20 @@ stage('unit test') {
        }
      }
 	  
-         stage('K8S Deployment - DEV') {
+    stage('K8S Deployment - DEV') {
        steps {
-         
-         
+         parallel(
+           "Deployment": {
              withKubeConfig([credentialsId: 'kubeconfig']) {
-               sh "sed -i 's#replace#amineturki/sringboot-app:${GIT_COMMIT}#g' k8s_deployment_service.yaml"
-               sh "kubectl  apply -f k8s_deployment_service.yaml"
+               sh "bash k8s-deployment.sh"
              }
-           
-                
+           },
+           "Rollout Status": {
+             withKubeConfig([credentialsId: 'kubeconfig']) {
+               sh "bash k8s-deployment-rollout-status.sh"
+             }
+           }
+         )
        }
      }
     
