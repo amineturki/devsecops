@@ -92,10 +92,11 @@ stage('unit test') {
            },
            "Kubesec Scan": {
              sh "bash kubesec-scan.sh"
-           },
-           "Trivy Scan": {
-             sh "bash trivy-k8s-scan.sh"
-           }
+	   }
+         //  },
+         //  "Trivy Scan": {
+         //    sh "bash trivy-k8s-scan.sh"
+         //  }
          )
        }
      }
