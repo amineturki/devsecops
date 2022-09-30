@@ -21,12 +21,12 @@ pipeline {
          archive 'target/*.jar'
        }
      }
-stage('unit test') {
+ /*  stage('unit test') {
             steps {
               sh "mvn test"
               
             }
-      }
+      }  */
         stage('Mutation Tests - PIT') {
             steps {
                sh "mvn org.pitest:pitest-maven:mutationCoverage"
@@ -34,14 +34,14 @@ stage('unit test') {
 			 post {
              always {
               
-		pitmutation mutationStatsFile: '**/target/pit-reports/**/mutations.xml'
+		 pitmutation mutationStatsFile: '**/target/pit-reports/**/mutations.xml'
 		
            }    
         } 
          
           }
     
-     stage('SonarQube SAST') {
+ /*    stage('SonarQube SAST') {
        steps {
                      withSonarQubeEnv('SonarQube') 
 
@@ -55,7 +55,7 @@ stage('unit test') {
           
                      }
 
-    }
+    }  */
     
  stage('Vulnerability Scan - Docker') {
        steps {
