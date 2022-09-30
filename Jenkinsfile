@@ -57,7 +57,7 @@ pipeline {
 
     }  */
     
- stage('Vulnerability Scan - Docker') {
+/* stage('Vulnerability Scan - Docker') {
        steps {
          parallel(
          	"Dependency Scan": {
@@ -71,7 +71,7 @@ pipeline {
 	 		}   	
        	)
        }
-     }
+     }  */
     
     
         stage('Docker Build and Push') {
@@ -121,14 +121,14 @@ pipeline {
     
     }
 	
-	 post {
+	/* post {
              always {
                junit 'target/surefire-reports/*.xml'
                jacoco execPattern: 'target/jacoco.exec'
 	       dependencyCheckPublisher pattern: 'target/dependency-check-report.xml'
-	       //pitmutation mutationStatsFile: '**/target/pit-reports/**/mutations.xml'
+	      
            }    
-        }   
+        }   */
 
 }
 
