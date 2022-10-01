@@ -14,7 +14,7 @@ def call(String buildStatus = 'STARTED') {
   emoji = ':hulk:'
  }
 
-// def msg = "${buildStatus}: `${env.JOB_NAME}` #${env.BUILD_NUMBER}:\n${env.BUILD_URL}"
+ def msg = "${buildStatus}: `${env.JOB_NAME}` #${env.BUILD_NUMBER}:\n${env.BUILD_URL}"
 
   slackSend(color: color, message: msg)
 
