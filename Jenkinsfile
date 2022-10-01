@@ -157,8 +157,7 @@ pipeline {
             //   junit 'target/surefire-reports/*.xml'
             //   jacoco execPattern: 'target/jacoco.exec'
 	    //   dependencyCheckPublisher pattern: 'target/dependency-check-report.xml'
-		     publishHTML([allowMissing: false, alwaysLinkToLastBuild: true, keepAll: true, reportDir: 'owasp-zap-report', reportFiles: 'index.html', reportName: 'Owasp zap HTML Report', reportTitles: 'zap_report.html', useWrapperFileDirectly: true])
-	      
+		   publishHTML([allowMissing: false, alwaysLinkToLastBuild: true, keepAll: true, reportDir: 'owasp-zap-report', reportFiles: 'zap_report.html', reportName: 'Owasp zap HTML Report', reportTitles: 'Owasp zap HTML Report', useWrapperFileDirectly: true])
            }    
         }   
 
