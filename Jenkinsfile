@@ -10,7 +10,7 @@ pipeline {
     serviceName = "devsecops-svc"
     imageName = "amineturki/sringboot-app:${GIT_COMMIT}"
     applicationURL="http://devsecops-demo-amine.eastus.cloudapp.azure.com"
-    applicationURI="increment/99"
+    applicationURI="/increment/99"
   }
 	//http://devsecops-demo-amine.eastus.cloudapp.azure.com
   stages {
