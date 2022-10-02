@@ -21,12 +21,12 @@ pipeline {
          archive 'target/*.jar'
        }
      }
- /*  stage('unit test') {
+   stage('unit test') {
             steps {
               sh "mvn test"
               
             }
-      }  */
+      }  
         stage('Mutation Tests - PIT') {
             steps {
                sh "mvn org.pitest:pitest-maven:mutationCoverage"
