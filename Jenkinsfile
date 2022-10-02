@@ -154,7 +154,7 @@ pipeline {
        }
      }
 	 
-	   //    stage('K8S CIS Benchmark') {
+	      stage('K8S CIS Benchmark') {
        steps {
          script {
 
