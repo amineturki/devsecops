@@ -41,7 +41,7 @@ pipeline {
          
           }
     
- /*    stage('SonarQube SAST') {
+     stage('SonarQube SAST') {
        steps {
                      withSonarQubeEnv('SonarQube') 
 
@@ -55,9 +55,9 @@ pipeline {
           
                      }
 
-    }  */
+    }  
     
-/* stage('Vulnerability Scan - Docker') {
+ stage('Vulnerability Scan - Docker') {
        steps {
          parallel(
          	"Dependency Scan": {
@@ -71,7 +71,7 @@ pipeline {
 	 		}   	
        	)
        }
-     }  */
+     }  
     
     
         stage('Docker Build and Push') {
@@ -162,9 +162,9 @@ pipeline {
 	
 	 post {
              always {
-            //   junit 'target/surefire-reports/*.xml'
-            //   jacoco execPattern: 'target/jacoco.exec'
-	    //   dependencyCheckPublisher pattern: 'target/dependency-check-report.xml'
+               junit 'target/surefire-reports/*.xml'
+               jacoco execPattern: 'target/jacoco.exec'
+	       dependencyCheckPublisher pattern: 'target/dependency-check-report.xml'
 		   publishHTML([allowMissing: false, alwaysLinkToLastBuild: true, keepAll: true, reportDir: 'owasp-zap-report', reportFiles: 'zap_report.html', reportName: 'Owasp zap HTML Report', reportTitles: 'Owasp zap HTML Report', useWrapperFileDirectly: true])
 		     sendNotification currentBuild.result
            }    
