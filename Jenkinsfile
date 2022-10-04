@@ -57,9 +57,9 @@ pipeline {
 
 	
 	
- /* stages {
+  stages {
 	  
-	     stage('Testing Slack - 1') {
+/*	     stage('Testing Slack - 1') {
       steps {
           sh 'exit 0'
       }
