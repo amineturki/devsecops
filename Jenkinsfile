@@ -57,7 +57,7 @@ pipeline {
 
 	
 	
-  stages {
+ /* stages {
 	  
 	     stage('Testing Slack - 1') {
       steps {
@@ -69,7 +69,7 @@ pipeline {
       steps {
           sh 'exit 1'
       }
-    }
+    }  */
 
      stage('Build Artifact - Maven') {
        steps {
