@@ -54,7 +54,12 @@ pipeline {
   }
 	
 	
-	      stage('Testing Slack - 1') {
+
+	
+	
+  stages {
+	  
+	     stage('Testing Slack - 1') {
       steps {
           sh 'exit 0'
       }
@@ -65,10 +70,6 @@ pipeline {
           sh 'exit 1'
       }
     }
-	
-	
-	//http://devsecops-demo-amine.eastus.cloudapp.azure.com
-  stages {
 
      stage('Build Artifact - Maven') {
        steps {
